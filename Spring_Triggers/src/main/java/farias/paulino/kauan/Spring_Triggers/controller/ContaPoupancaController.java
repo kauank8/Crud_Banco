@@ -22,12 +22,12 @@ public class ContaPoupancaController {
 	@Autowired
 	private ContaPoupancaDao pDao;
 	
-	@RequestMapping(name = "contapoupanca", value = "/contapoupanca", method = RequestMethod.GET)
+	@RequestMapping(name = "contaPoupanca", value = "/contaPoupanca", method = RequestMethod.GET)
 	public ModelAndView contaPoupancaGet(ModelMap model) {
 		return new ModelAndView("contaPoupanca");
 	}
 	
-	@RequestMapping(name = "contapoupanca", value = "/contapoupanca", method = RequestMethod.POST)
+	@RequestMapping(name = "contaPoupanca", value = "/contaPoupanca", method = RequestMethod.POST)
 	public ModelAndView contaPoupancaPost(@RequestParam Map<String, String> param, ModelMap model) {
 		
 		String cmd = param.get("botao");
@@ -52,7 +52,7 @@ public class ContaPoupancaController {
 		try {
 			if (cmd.equalsIgnoreCase("Cadastrar")) {
 				pDao.inserir(conta);
-				saida = "conta inserido com sucesso";
+				saida = "Conta inserido com sucesso";
 				conta = new ContaPoupanca();
 			}
 			if (cmd.equalsIgnoreCase("Atualizar")) {

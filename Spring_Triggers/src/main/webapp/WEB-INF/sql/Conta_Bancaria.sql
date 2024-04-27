@@ -33,7 +33,7 @@ begin
 	if((Select num_conta from ContaEspecial where num_conta = @num_conta) is not null) begin
 		set @limite = (select limite from ContaEspecial where num_conta = @num_conta)
 		
-		if(@saque > @limite) begin
+		if(@saque > (@limite + (select saldo from deleted))) begin
 			RollBack Transaction
 			RaisError('Esse valor ultrapassa seu limite',16,1)
 		end
